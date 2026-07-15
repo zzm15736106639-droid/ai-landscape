@@ -1,0 +1,63 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            frontend/package-lock.json
+
+      - name: Install Python dependencies
+        run: pip install -r requirements-dev.txt
+
+      - name: Fetch verified resources
+        shell: powershell
+        run: .\scripts\fetch_third_party.ps1
+
+      - name: Install JavaScript dependencies
+        shell: powershell
+        run: |
+          npm.cmd ci
+          npm.cmd --prefix frontend ci
+
+      - name: Python checks
+        shell: powershell
+        run: |
+          python -m compileall -q app.py backend frameshift scripts
+          python -m pytest -q
+          python scripts\verify_resources.py
+          python scripts\audit_scope.py
+          python scripts\scan_secrets.py
+
+      - name: Frontend and Electron checks
+        shell: powershell
+        run: |
+          npm.cmd --prefix frontend run lint
+          npm.cmd --prefix frontend run build
+          npm.cmd run desktop:check
+
+      - name: Dependency audit
+        shell: powershell
+        run: |
+          npm.cmd audit --audit-level=high
+          npm.cmd --prefix frontend audit --audit-level=high

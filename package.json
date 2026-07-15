@@ -1,0 +1,66 @@
+{
+  "name": "ai-landscape",
+  "productName": "AI Landscape",
+  "version": "0.1.0",
+  "description": "AI face-aware portrait-to-landscape video reframing desktop application",
+  "author": "zzm15736106639-droid",
+  "license": "MIT",
+  "main": "desktop/main.js",
+  "scripts": {
+    "frontend:install": "npm.cmd --prefix frontend ci",
+    "frontend:lint": "npm.cmd --prefix frontend run lint",
+    "frontend:build": "npm.cmd --prefix frontend run build",
+    "desktop:check": "node --check desktop/main.js && node --check desktop/preload.js",
+    "desktop:dev": "electron .",
+    "backend:build": "pyinstaller --clean --noconfirm AILandscapeBackend.spec",
+    "dist:win": "npm run frontend:build && npm run backend:build && electron-builder --win nsis portable --x64"
+  },
+  "devDependencies": {
+    "electron": "43.1.0",
+    "electron-builder": "26.15.3"
+  },
+  "build": {
+    "appId": "com.ai-landscape.desktop",
+    "productName": "AI Landscape",
+    "asar": true,
+    "directories": {
+      "output": "dist-desktop"
+    },
+    "files": [
+      "desktop/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "dist/AILandscapeBackend.exe",
+        "to": "backend/AILandscapeBackend.exe"
+      },
+      {
+        "from": "vendor/ffmpeg/bin",
+        "to": "ffmpeg/bin",
+        "filter": ["ffmpeg.exe", "ffprobe.exe"]
+      },
+      {
+        "from": "third_party",
+        "to": "third_party"
+      }
+    ],
+    "win": {
+      "target": [
+        { "target": "nsis", "arch": ["x64"] },
+        { "target": "portable", "arch": ["x64"] }
+      ]
+    },
+    "nsis": {
+      "artifactName": "AI-Landscape-${version}-${arch}-Setup.${ext}",
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "AI Landscape"
+    },
+    "portable": {
+      "artifactName": "AI-Landscape-${version}-${arch}-Portable.${ext}"
+    }
+  }
+}
