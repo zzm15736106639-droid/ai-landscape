@@ -13,7 +13,7 @@
     "desktop:check": "node --check desktop/main.js && node --check desktop/preload.js",
     "desktop:dev": "electron .",
     "backend:build": "pyinstaller --clean --noconfirm AILandscapeBackend.spec",
-    "dist:win": "npm run frontend:build && npm run backend:build && electron-builder --win nsis portable --x64"
+    "dist:win": "npm run frontend:build && npm run backend:build && electron-builder --win nsis portable --x64 --publish never"
   },
   "devDependencies": {
     "electron": "43.1.0",
