@@ -21,7 +21,10 @@ release-resources/
 *.avi
 *.webm
 *.gif
+!docs/assets/demo/*.mp4
+!docs/assets/demo/*.gif
 !tests/fixtures/.gitkeep
 assets/fonts/*.otf
 assets/fonts/*.ttf
 !assets/fonts/.gitkeep
+/样例素材/
