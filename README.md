@@ -1,17 +1,17 @@
-# AI Landscape
+# AI-VideoShift
 
 [![CI](https://github.com/Chillzzm/ai-landscape/actions/workflows/ci.yml/badge.svg)](https://github.com/Chillzzm/ai-landscape/actions/workflows/ci.yml)
 [![Release](https://img.shields.io/github/v/release/Chillzzm/ai-landscape)](https://github.com/Chillzzm/ai-landscape/releases/latest)
 [![License](https://img.shields.io/github/license/Chillzzm/ai-landscape)](LICENSE)
 [![Platform](https://img.shields.io/badge/platform-Windows%2010%2F11-0078D4)](#系统要求)
 
-AI Landscape 是一款面向 Windows和Mac 的竖屏转横屏桌面工具。它会按镜头分析人物位置，将竖屏视频自动重构为 `1280×720` 横屏视频，并支持批量处理、字幕编辑、透明特效和 NVIDIA NVENC 编码。
+AI-VideoShift 是一款面向 Windows和Mac 的竖屏转横屏桌面工具。它会按镜头分析人物位置，将竖屏视频自动重构为 `1280×720` 横屏视频，并支持批量处理、字幕编辑、透明特效和 NVIDIA NVENC 编码。
 
 处理过程保持原视频时间线不变：不会裁掉时长、加速、循环或随机丢帧。
 
 ## 效果展示
 
-下面的动态预览来自同一段视频：左侧是竖屏原视频，右侧是 AI Landscape 输出的横屏结果。
+下面的动态预览来自同一段视频：左侧是竖屏原视频，右侧是 AI-VideoShift 输出的横屏结果。
 
 ![竖屏原视频与横屏处理结果动态对比](docs/assets/demo/before-after.gif)
 
@@ -19,7 +19,7 @@ AI Landscape 是一款面向 Windows和Mac 的竖屏转横屏桌面工具。它�
 
 | 竖屏原视频 | 横屏处理结果 |
 | :---: | :---: |
-| <img src="docs/assets/demo/source-frame.jpg" width="270" alt="竖屏原视频画面"> | <img src="docs/assets/demo/result-frame.jpg" width="600" alt="AI Landscape 横屏处理结果"> |
+| <img src="docs/assets/demo/source-frame.jpg" width="270" alt="竖屏原视频画面"> | <img src="docs/assets/demo/result-frame.jpg" width="600" alt="AI-VideoShift 横屏处理结果"> |
 
 YuNet 会在采样帧中检测人脸与眼睛位置，再为当前镜头选择主要人物和固定取景窗口。下面是开发调试阶段的人脸识别结果示意图；绿色框、眼睛标记和顶部状态文字不会出现在最终视频中。
 
