@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/github/license/Chillzzm/ai-landscape)](LICENSE)
 [![Platform](https://img.shields.io/badge/platform-Windows%2010%2F11-0078D4)](#系统要求)
 
-AI Landscape 是一款面向 Windows 的竖屏转横屏桌面工具。它会按镜头分析人物位置，将竖屏视频自动重构为 `1280×720` 横屏视频，并支持批量处理、字幕编辑、透明特效和 NVIDIA NVENC 编码。
+AI Landscape 是一款面向 Windows和Mac 的竖屏转横屏桌面工具。它会按镜头分析人物位置，将竖屏视频自动重构为 `1280×720` 横屏视频，并支持批量处理、字幕编辑、透明特效和 NVIDIA NVENC 编码。
 
 处理过程保持原视频时间线不变：不会裁掉时长、加速、循环或随机丢帧。
 
