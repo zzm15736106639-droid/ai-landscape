@@ -16,7 +16,7 @@
     "dist:win": "npm run frontend:build && npm run backend:build && electron-builder --win nsis portable --x64 --publish never"
   },
   "devDependencies": {
-    "electron": "43.1.0",
+    "electron": "43.2.0",
     "electron-builder": "26.15.3"
   },
   "build": {
